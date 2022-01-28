@@ -1,5 +1,5 @@
 ﻿
-namespace RustDMA
+namespace rustbox
 {
     partial class FormMain
     {

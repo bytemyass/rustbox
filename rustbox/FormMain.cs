@@ -1,4 +1,4 @@
-﻿using RustDMA.Features;
+﻿using rustbox.Features;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static RustDMA.Features.UpdateLoop;
+using static rustbox.Features.UpdateLoop;
 
-namespace RustDMA
+namespace rustbox
 {
     public partial class FormMain : Form
     {

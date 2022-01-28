@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RustDMA.Features
+namespace rustbox.Features
 {
     public static class VectorExtensions
     {
@@ -336,15 +336,11 @@ namespace RustDMA.Features
                     continue;
                 }
 
-                //j7ware additions
-
-
-
-
+                //j7ware additions//
 
                 if (cullingESP && localPlayer != 0) /// this one makes it constantly write, we dont know if this is necessary yet so use the buttons
                 {
-                    ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + 0x31161F0);
+                    ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.occlusionculling);
                     ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
 
 
@@ -376,9 +372,9 @@ namespace RustDMA.Features
                     DMAController.WriteMemory<float>(baseMovement + Offsets.groundAngle, 0.0f);
                     DMAController.WriteMemory<float>(baseMovement + Offsets.groundAngleNew, 0.0f);
                 }
-                ////////
-                ///
-
+                ///////
+                ////
+                //
 
                 if (adminFlag && localPlayer != 0)
                 {

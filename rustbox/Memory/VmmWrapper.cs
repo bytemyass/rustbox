@@ -18,7 +18,7 @@ using System.Collections.Generic;
  *  
  */
 
-namespace RustDMA
+namespace rustbox
 {
     public struct MEM_SCATTER
     {

@@ -1,4 +1,4 @@
-﻿namespace RustDMA.Features
+﻿namespace rustbox.Features
 {
     public class GameObject
     {
