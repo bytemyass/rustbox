@@ -39,14 +39,18 @@ namespace rustbox
             this.buttonDetach = new System.Windows.Forms.Button();
             this.buttonAttach = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
+            this.buttonApplyFilter = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonEnableRisky = new System.Windows.Forms.Button();
+            this.buttonDisableRisky = new System.Windows.Forms.Button();
+            this.checkBoxAdminflag = new System.Windows.Forms.CheckBox();
+            this.checkBoxJump = new System.Windows.Forms.CheckBox();
+            this.checkBoxSpiderman = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.buttonCullingON = new System.Windows.Forms.Button();
-            this.buttonApplyFilter = new System.Windows.Forms.Button();
             this.buttonCullingOFF = new System.Windows.Forms.Button();
             this.checkBoxCullingESP = new System.Windows.Forms.CheckBox();
-            this.checkBoxSpiderman = new System.Windows.Forms.CheckBox();
-            this.checkBoxJump = new System.Windows.Forms.CheckBox();
             this.labelFOV = new System.Windows.Forms.Label();
             this.trackBarFOVSlider = new System.Windows.Forms.TrackBar();
             this.checkBoxFOV = new System.Windows.Forms.CheckBox();
@@ -92,9 +96,10 @@ namespace rustbox
             this.labelLR300Pitch = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.trackBarLR300Pitch = new System.Windows.Forms.TrackBar();
-            this.checkBoxAdminflag = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFOVSlider)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageCustomSMG.SuspendLayout();
@@ -210,13 +215,13 @@ namespace rustbox
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.comboBoxFilter);
+            this.groupBox1.Controls.Add(this.buttonApplyFilter);
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.buttonCullingON);
-            this.groupBox1.Controls.Add(this.buttonApplyFilter);
             this.groupBox1.Controls.Add(this.buttonCullingOFF);
             this.groupBox1.Controls.Add(this.checkBoxCullingESP);
-            this.groupBox1.Controls.Add(this.checkBoxSpiderman);
-            this.groupBox1.Controls.Add(this.checkBoxJump);
             this.groupBox1.Controls.Add(this.labelFOV);
             this.groupBox1.Controls.Add(this.trackBarFOVSlider);
             this.groupBox1.Controls.Add(this.checkBoxFOV);
@@ -227,7 +232,6 @@ namespace rustbox
             this.groupBox1.Controls.Add(this.buttonSaveRecoil);
             this.groupBox1.Controls.Add(this.checkBoxNoRecoil);
             this.groupBox1.Controls.Add(this.tabControl1);
-            this.groupBox1.Controls.Add(this.checkBoxAdminflag);
             this.groupBox1.Location = new System.Drawing.Point(8, 112);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(312, 428);
@@ -235,86 +239,87 @@ namespace rustbox
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Features";
             // 
-            // label4
+            // comboBoxFilter
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(127, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "keybind:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Scattering Chams",
-            "Null Chams"});
-            this.comboBox1.Location = new System.Drawing.Point(174, 61);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(50, 21);
-            this.comboBox1.TabIndex = 17;
-            // 
-            // buttonCullingON
-            // 
-            this.buttonCullingON.Location = new System.Drawing.Point(8, 148);
-            this.buttonCullingON.Name = "buttonCullingON";
-            this.buttonCullingON.Size = new System.Drawing.Size(59, 23);
-            this.buttonCullingON.TabIndex = 16;
-            this.buttonCullingON.Text = "ESP ON";
-            this.buttonCullingON.UseVisualStyleBackColor = true;
-            this.buttonCullingON.Click += new System.EventHandler(this.buttonCullingON_Click);
+            this.comboBoxFilter.FormattingEnabled = true;
+            this.comboBoxFilter.Items.AddRange(new object[] {
+            "Players",
+            "AI",
+            "Corpse"});
+            this.comboBoxFilter.Location = new System.Drawing.Point(106, 115);
+            this.comboBoxFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxFilter.Name = "comboBoxFilter";
+            this.comboBoxFilter.Size = new System.Drawing.Size(61, 21);
+            this.comboBoxFilter.TabIndex = 0;
+            this.comboBoxFilter.TabStop = false;
+            this.comboBoxFilter.Text = "Players";
+            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
             // 
             // buttonApplyFilter
             // 
-            this.buttonApplyFilter.Location = new System.Drawing.Point(272, 148);
+            this.buttonApplyFilter.Location = new System.Drawing.Point(169, 114);
             this.buttonApplyFilter.Name = "buttonApplyFilter";
-            this.buttonApplyFilter.Size = new System.Drawing.Size(29, 23);
-            this.buttonApplyFilter.TabIndex = 15;
-            this.buttonApplyFilter.Text = "apply filter";
+            this.buttonApplyFilter.Size = new System.Drawing.Size(42, 23);
+            this.buttonApplyFilter.TabIndex = 20;
+            this.buttonApplyFilter.Text = "Apply";
             this.buttonApplyFilter.UseVisualStyleBackColor = true;
             this.buttonApplyFilter.Click += new System.EventHandler(this.buttonApplyFilter_Click);
             // 
-            // buttonCullingOFF
+            // groupBox3
             // 
-            this.buttonCullingOFF.Enabled = false;
-            this.buttonCullingOFF.Location = new System.Drawing.Point(73, 148);
-            this.buttonCullingOFF.Name = "buttonCullingOFF";
-            this.buttonCullingOFF.Size = new System.Drawing.Size(59, 23);
-            this.buttonCullingOFF.TabIndex = 14;
-            this.buttonCullingOFF.Text = "ESP OFF";
-            this.buttonCullingOFF.UseVisualStyleBackColor = true;
-            this.buttonCullingOFF.Click += new System.EventHandler(this.buttonCullingOFF_Click);
+            this.groupBox3.Controls.Add(this.buttonEnableRisky);
+            this.groupBox3.Controls.Add(this.buttonDisableRisky);
+            this.groupBox3.Controls.Add(this.checkBoxAdminflag);
+            this.groupBox3.Controls.Add(this.checkBoxJump);
+            this.groupBox3.Controls.Add(this.checkBoxSpiderman);
+            this.groupBox3.Location = new System.Drawing.Point(228, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(84, 89);
+            this.groupBox3.TabIndex = 19;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Risky";
             // 
-            // checkBoxCullingESP
+            // buttonEnableRisky
             // 
-            this.checkBoxCullingESP.AutoSize = true;
-            this.checkBoxCullingESP.Location = new System.Drawing.Point(137, 152);
-            this.checkBoxCullingESP.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxCullingESP.Name = "checkBoxCullingESP";
-            this.checkBoxCullingESP.Size = new System.Drawing.Size(119, 17);
-            this.checkBoxCullingESP.TabIndex = 13;
-            this.checkBoxCullingESP.Text = "cESP (bool -testing)";
-            this.checkBoxCullingESP.UseVisualStyleBackColor = true;
-            this.checkBoxCullingESP.CheckedChanged += new System.EventHandler(this.checkBoxCullingESP_CheckedChanged);
+            this.buttonEnableRisky.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.55F);
+            this.buttonEnableRisky.Location = new System.Drawing.Point(39, 0);
+            this.buttonEnableRisky.Name = "buttonEnableRisky";
+            this.buttonEnableRisky.Size = new System.Drawing.Size(43, 17);
+            this.buttonEnableRisky.TabIndex = 21;
+            this.buttonEnableRisky.Text = "ENABLE";
+            this.buttonEnableRisky.UseVisualStyleBackColor = true;
+            this.buttonEnableRisky.Click += new System.EventHandler(this.buttonEnableRisky_Click);
             // 
-            // checkBoxSpiderman
+            // buttonDisableRisky
             // 
-            this.checkBoxSpiderman.AutoSize = true;
-            this.checkBoxSpiderman.Location = new System.Drawing.Point(10, 126);
-            this.checkBoxSpiderman.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxSpiderman.Name = "checkBoxSpiderman";
-            this.checkBoxSpiderman.Size = new System.Drawing.Size(76, 17);
-            this.checkBoxSpiderman.TabIndex = 12;
-            this.checkBoxSpiderman.Text = "Spiderman";
-            this.checkBoxSpiderman.UseVisualStyleBackColor = true;
-            this.checkBoxSpiderman.CheckedChanged += new System.EventHandler(this.checkBoxSpiderman_CheckedChanged);
+            this.buttonDisableRisky.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F);
+            this.buttonDisableRisky.Location = new System.Drawing.Point(39, 0);
+            this.buttonDisableRisky.Name = "buttonDisableRisky";
+            this.buttonDisableRisky.Size = new System.Drawing.Size(43, 17);
+            this.buttonDisableRisky.TabIndex = 20;
+            this.buttonDisableRisky.Text = "DISABLE";
+            this.buttonDisableRisky.UseVisualStyleBackColor = true;
+            this.buttonDisableRisky.Visible = false;
+            this.buttonDisableRisky.Click += new System.EventHandler(this.buttonDisableRisky_Click);
+            // 
+            // checkBoxAdminflag
+            // 
+            this.checkBoxAdminflag.AutoSize = true;
+            this.checkBoxAdminflag.Enabled = false;
+            this.checkBoxAdminflag.Location = new System.Drawing.Point(5, 26);
+            this.checkBoxAdminflag.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAdminflag.Name = "checkBoxAdminflag";
+            this.checkBoxAdminflag.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxAdminflag.TabIndex = 0;
+            this.checkBoxAdminflag.Text = "Adminflag";
+            this.checkBoxAdminflag.UseVisualStyleBackColor = true;
+            this.checkBoxAdminflag.CheckedChanged += new System.EventHandler(this.checkBoxAdminflag_CheckedChanged);
             // 
             // checkBoxJump
             // 
             this.checkBoxJump.AutoSize = true;
-            this.checkBoxJump.Location = new System.Drawing.Point(10, 105);
+            this.checkBoxJump.Enabled = false;
+            this.checkBoxJump.Location = new System.Drawing.Point(5, 47);
             this.checkBoxJump.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxJump.Name = "checkBoxJump";
             this.checkBoxJump.Size = new System.Drawing.Size(69, 17);
@@ -323,10 +328,70 @@ namespace rustbox
             this.checkBoxJump.UseVisualStyleBackColor = true;
             this.checkBoxJump.CheckedChanged += new System.EventHandler(this.checkBoxJump_CheckedChanged);
             // 
+            // checkBoxSpiderman
+            // 
+            this.checkBoxSpiderman.AutoSize = true;
+            this.checkBoxSpiderman.Enabled = false;
+            this.checkBoxSpiderman.Location = new System.Drawing.Point(5, 68);
+            this.checkBoxSpiderman.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSpiderman.Name = "checkBoxSpiderman";
+            this.checkBoxSpiderman.Size = new System.Drawing.Size(76, 17);
+            this.checkBoxSpiderman.TabIndex = 12;
+            this.checkBoxSpiderman.Text = "Spiderman";
+            this.checkBoxSpiderman.UseVisualStyleBackColor = true;
+            this.checkBoxSpiderman.CheckedChanged += new System.EventHandler(this.checkBoxSpiderman_CheckedChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Scattering Chams",
+            "Null Chams"});
+            this.comboBox1.Location = new System.Drawing.Point(125, 61);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(50, 21);
+            this.comboBox1.TabIndex = 17;
+            this.comboBox1.TabStop = false;
+            // 
+            // buttonCullingON
+            // 
+            this.buttonCullingON.Location = new System.Drawing.Point(8, 114);
+            this.buttonCullingON.Name = "buttonCullingON";
+            this.buttonCullingON.Size = new System.Drawing.Size(60, 23);
+            this.buttonCullingON.TabIndex = 16;
+            this.buttonCullingON.Text = "ESP ON";
+            this.buttonCullingON.UseVisualStyleBackColor = true;
+            this.buttonCullingON.Click += new System.EventHandler(this.buttonCullingON_Click);
+            // 
+            // buttonCullingOFF
+            // 
+            this.buttonCullingOFF.Enabled = false;
+            this.buttonCullingOFF.Location = new System.Drawing.Point(8, 114);
+            this.buttonCullingOFF.Name = "buttonCullingOFF";
+            this.buttonCullingOFF.Size = new System.Drawing.Size(60, 23);
+            this.buttonCullingOFF.TabIndex = 14;
+            this.buttonCullingOFF.Text = "ESP OFF";
+            this.buttonCullingOFF.UseVisualStyleBackColor = true;
+            this.buttonCullingOFF.Visible = false;
+            this.buttonCullingOFF.Click += new System.EventHandler(this.buttonCullingOFF_Click);
+            // 
+            // checkBoxCullingESP
+            // 
+            this.checkBoxCullingESP.AutoSize = true;
+            this.checkBoxCullingESP.Location = new System.Drawing.Point(8, 142);
+            this.checkBoxCullingESP.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxCullingESP.Name = "checkBoxCullingESP";
+            this.checkBoxCullingESP.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxCullingESP.TabIndex = 13;
+            this.checkBoxCullingESP.Text = "cESP (bool -testing)";
+            this.checkBoxCullingESP.UseVisualStyleBackColor = true;
+            this.checkBoxCullingESP.CheckedChanged += new System.EventHandler(this.checkBoxCullingESP_CheckedChanged);
+            // 
             // labelFOV
             // 
             this.labelFOV.AutoSize = true;
-            this.labelFOV.Location = new System.Drawing.Point(196, 87);
+            this.labelFOV.Location = new System.Drawing.Point(159, 87);
             this.labelFOV.Name = "labelFOV";
             this.labelFOV.Size = new System.Drawing.Size(13, 13);
             this.labelFOV.TabIndex = 10;
@@ -335,7 +400,7 @@ namespace rustbox
             // trackBarFOVSlider
             // 
             this.trackBarFOVSlider.LargeChange = 10;
-            this.trackBarFOVSlider.Location = new System.Drawing.Point(125, 84);
+            this.trackBarFOVSlider.Location = new System.Drawing.Point(88, 84);
             this.trackBarFOVSlider.Maximum = 200;
             this.trackBarFOVSlider.Name = "trackBarFOVSlider";
             this.trackBarFOVSlider.Size = new System.Drawing.Size(69, 45);
@@ -365,8 +430,9 @@ namespace rustbox
             this.comboBoxChams.Location = new System.Drawing.Point(72, 39);
             this.comboBoxChams.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxChams.Name = "comboBoxChams";
-            this.comboBoxChams.Size = new System.Drawing.Size(97, 21);
-            this.comboBoxChams.TabIndex = 7;
+            this.comboBoxChams.Size = new System.Drawing.Size(78, 21);
+            this.comboBoxChams.TabIndex = 0;
+            this.comboBoxChams.TabStop = false;
             this.comboBoxChams.SelectedIndexChanged += new System.EventHandler(this.comboBoxChams_SelectedIndexChanged);
             // 
             // checkBoxInteractiveDebugCamera
@@ -824,17 +890,14 @@ namespace rustbox
             this.trackBarLR300Pitch.TabIndex = 24;
             this.trackBarLR300Pitch.Scroll += new System.EventHandler(this.trackBarLR300Pitch_Scroll);
             // 
-            // checkBoxAdminflag
+            // label4
             // 
-            this.checkBoxAdminflag.AutoSize = true;
-            this.checkBoxAdminflag.Location = new System.Drawing.Point(10, 19);
-            this.checkBoxAdminflag.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxAdminflag.Name = "checkBoxAdminflag";
-            this.checkBoxAdminflag.Size = new System.Drawing.Size(72, 17);
-            this.checkBoxAdminflag.TabIndex = 0;
-            this.checkBoxAdminflag.Text = "Adminflag";
-            this.checkBoxAdminflag.UseVisualStyleBackColor = true;
-            this.checkBoxAdminflag.CheckedChanged += new System.EventHandler(this.checkBoxAdminflag_CheckedChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(72, 119);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Filter:";
             // 
             // FormMain
             // 
@@ -852,6 +915,8 @@ namespace rustbox
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFOVSlider)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPageCustomSMG.ResumeLayout(false);
@@ -940,9 +1005,13 @@ namespace rustbox
         public System.Windows.Forms.CheckBox checkBoxFOV;
         public System.Windows.Forms.CheckBox checkBoxCullingESP;
         public System.Windows.Forms.Button buttonCullingOFF;
-        public System.Windows.Forms.Button buttonApplyFilter;
         public System.Windows.Forms.Button buttonCullingON;
         public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.Button buttonEnableRisky;
+        public System.Windows.Forms.Button buttonDisableRisky;
+        public System.Windows.Forms.Button buttonApplyFilter;
+        public System.Windows.Forms.ComboBox comboBoxFilter;
         private System.Windows.Forms.Label label4;
     }
 }

@@ -17,7 +17,7 @@ namespace rustbox
     {
         public int selectedChams = 0;
         public bool needRewrite = false;
-
+        public int selectedFilter = 0;
         public FormMain()
         {
             InitializeComponent();
@@ -340,36 +340,122 @@ namespace rustbox
         private void buttonCullingOFF_Click(object sender, EventArgs e)
         {
             this.buttonCullingOFF.Enabled = false;
-            ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + 0x31161F0);
+
+            ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.occlusionculling);
             ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
             DMAController.WriteMemory<bool>(otherCulling + Offsets.debugShow, false);
+
+
+            this.buttonCullingOFF.Visible = false;
             this.buttonCullingON.Enabled = true;
+            this.buttonCullingON.Visible = true;
         }
 
-        private void buttonApplyFilter_Click(object sender, EventArgs e)
-        {
-
-            ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + 0x31161F0);
-            ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
-
-        }
+       
 
         private void buttonCullingON_Click(object sender, EventArgs e)
         {
             this.buttonCullingON.Enabled = false;
+            
             //get OcclusionCulling
             ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.occlusionculling);
             ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
             //
+
             //PLAYER ONLY FILTER
-            int layerFilter = 131072;
-            ulong singletonPointer = DMAController.ReadMemory<ulong>(otherCulling + 0x80);
-            ulong debugSettings = DMAController.ReadMemory<ulong>(singletonPointer + Offsets.debugSettings);
-            DMAController.WriteMemory<int>(debugSettings + 0x20, layerFilter); //writes the layer filter
+           // int layerFilter = 131072;
+            //ulong singletonPointer = DMAController.ReadMemory<ulong>(otherCulling + 0x80);
+           // ulong debugSettings = DMAController.ReadMemory<ulong>(singletonPointer + Offsets.debugSettings);
+
+           // DMAController.WriteMemory<int>(debugSettings + 0x20, layerFilter); //writes the layer filter
             //                                                              
 
             DMAController.WriteMemory<bool>(otherCulling + Offsets.debugShow, true); //writes culling on
+
+
+            this.buttonCullingON.Visible = false;
             this.buttonCullingOFF.Enabled = true;
+            this.buttonCullingOFF.Visible = true;
         }
+        private void buttonPlayerFilter_Click(object sender, EventArgs e)
+        {
+            ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.occlusionculling);
+            ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
+
+            int playerFilter = 131072;
+            ulong singletonPointer = DMAController.ReadMemory<ulong>(otherCulling + 0x80);
+            ulong debugSettings = DMAController.ReadMemory<ulong>(singletonPointer + Offsets.debugSettings);
+
+            DMAController.WriteMemory<int>(debugSettings + 0x20, playerFilter); //writes the layer filter
+
+        }
+
+        private void buttonNpcFilter_Click(object sender, EventArgs e)
+        {
+            ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.occlusionculling);
+            ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
+
+            int npcFilter = 2048;
+            ulong singletonPointer = DMAController.ReadMemory<ulong>(otherCulling + 0x80);
+            ulong debugSettings = DMAController.ReadMemory<ulong>(singletonPointer + Offsets.debugSettings);
+
+            DMAController.WriteMemory<int>(debugSettings + 0x20, npcFilter); //writes the layer filter
+        }
+
+        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedFilter = comboBoxFilter.SelectedIndex;
+        }
+        private void buttonEnableRisky_Click(object sender, EventArgs e)
+        {
+            buttonEnableRisky.Visible = false;
+            buttonDisableRisky.Visible = true;
+
+            checkBoxAdminflag.Enabled = true;
+            checkBoxJump.Enabled = true;
+            checkBoxSpiderman.Enabled = true;
+        }
+
+        private void buttonDisableRisky_Click(object sender, EventArgs e)
+        {
+            buttonDisableRisky.Visible = false;
+            buttonEnableRisky.Visible = true;
+            
+
+            checkBoxAdminflag.Enabled = false;
+            checkBoxJump.Enabled = false;
+            checkBoxSpiderman.Enabled = false;
+        }
+
+        private void buttonApplyFilter_Click(object sender, EventArgs e)
+        {
+            ulong occlusionCulling = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.occlusionculling);
+            ulong otherCulling = DMAController.ReadMemory<ulong>(occlusionCulling + 0xB8);
+
+
+            ulong singletonPointer = DMAController.ReadMemory<ulong>(otherCulling + 0x80);
+            ulong debugSettings = DMAController.ReadMemory<ulong>(singletonPointer + Offsets.debugSettings);
+            if (selectedFilter == 0) //player
+            {
+                int layerFilter = 131072;
+                DMAController.WriteMemory<int>(debugSettings + 0x20, layerFilter); //writes the layer filter
+            }
+
+            if (selectedFilter == 1) //npc
+            {
+                int layerFilter = 2048;
+                DMAController.WriteMemory<int>(debugSettings + 0x20, layerFilter); //writes the layer filter
+            }
+
+            if (selectedFilter == 2) //corpse
+            {
+                int layerFilter = 512;
+                DMAController.WriteMemory<int>(debugSettings + 0x20, layerFilter); //writes the layer filter
+            }
+
+
+        }
+
+        
     }
 }

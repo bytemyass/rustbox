@@ -36,8 +36,8 @@ namespace rustbox
 
 
         public static uint gom = 0x17C1F18;
-        public static uint baseNetworkable = 0x3115CB0;
-        public static uint occlusionculling = 0x31161F0; //OcclusionCulling_Typeinfo  > scripts.json
+        public static uint baseNetworkable = 0x3115CF0;
+        public static uint occlusionculling = 0x3116230; //OcclusionCulling_Typeinfo  > scripts.json
 
         public static uint playerFlags = 0x680; //BasePlayer
         public static uint playerEyes = 0x688; //BasePlayer

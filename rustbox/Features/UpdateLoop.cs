@@ -46,7 +46,7 @@ namespace rustbox.Features
         private static bool restoredRecoil = false;
         private static ulong lastWeaponPtr = 0;
         private static uint lastItemId;
-        private static int layerFilter = 131072;
+      
 
         public static bool rewrite = false;
 
