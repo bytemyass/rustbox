@@ -38,7 +38,7 @@ namespace rustbox
             this.label1 = new System.Windows.Forms.Label();
             this.buttonDetach = new System.Windows.Forms.Button();
             this.buttonAttach = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.wwwwwwww = new System.Windows.Forms.GroupBox();
             this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.buttonApplyFilter = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -98,7 +98,7 @@ namespace rustbox
             this.trackBarLR300Pitch = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.wwwwwwww.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFOVSlider)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -212,32 +212,32 @@ namespace rustbox
             this.buttonAttach.UseVisualStyleBackColor = true;
             this.buttonAttach.Click += new System.EventHandler(this.buttonAttach_Click);
             // 
-            // groupBox1
+            // wwwwwwww
             // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBoxFilter);
-            this.groupBox1.Controls.Add(this.buttonApplyFilter);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.buttonCullingON);
-            this.groupBox1.Controls.Add(this.buttonCullingOFF);
-            this.groupBox1.Controls.Add(this.checkBoxCullingESP);
-            this.groupBox1.Controls.Add(this.labelFOV);
-            this.groupBox1.Controls.Add(this.trackBarFOVSlider);
-            this.groupBox1.Controls.Add(this.checkBoxFOV);
-            this.groupBox1.Controls.Add(this.comboBoxChams);
-            this.groupBox1.Controls.Add(this.checkBoxInteractiveDebugCamera);
-            this.groupBox1.Controls.Add(this.checkBoxChams);
-            this.groupBox1.Controls.Add(this.checkBoxKeepRecoil);
-            this.groupBox1.Controls.Add(this.buttonSaveRecoil);
-            this.groupBox1.Controls.Add(this.checkBoxNoRecoil);
-            this.groupBox1.Controls.Add(this.tabControl1);
-            this.groupBox1.Location = new System.Drawing.Point(8, 112);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(312, 428);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Features";
+            this.wwwwwwww.Controls.Add(this.label4);
+            this.wwwwwwww.Controls.Add(this.comboBoxFilter);
+            this.wwwwwwww.Controls.Add(this.buttonApplyFilter);
+            this.wwwwwwww.Controls.Add(this.groupBox3);
+            this.wwwwwwww.Controls.Add(this.comboBox1);
+            this.wwwwwwww.Controls.Add(this.buttonCullingON);
+            this.wwwwwwww.Controls.Add(this.buttonCullingOFF);
+            this.wwwwwwww.Controls.Add(this.checkBoxCullingESP);
+            this.wwwwwwww.Controls.Add(this.labelFOV);
+            this.wwwwwwww.Controls.Add(this.trackBarFOVSlider);
+            this.wwwwwwww.Controls.Add(this.checkBoxFOV);
+            this.wwwwwwww.Controls.Add(this.comboBoxChams);
+            this.wwwwwwww.Controls.Add(this.checkBoxInteractiveDebugCamera);
+            this.wwwwwwww.Controls.Add(this.checkBoxChams);
+            this.wwwwwwww.Controls.Add(this.checkBoxKeepRecoil);
+            this.wwwwwwww.Controls.Add(this.buttonSaveRecoil);
+            this.wwwwwwww.Controls.Add(this.checkBoxNoRecoil);
+            this.wwwwwwww.Controls.Add(this.tabControl1);
+            this.wwwwwwww.Location = new System.Drawing.Point(8, 112);
+            this.wwwwwwww.Name = "wwwwwwww";
+            this.wwwwwwww.Size = new System.Drawing.Size(312, 428);
+            this.wwwwwwww.TabIndex = 4;
+            this.wwwwwwww.TabStop = false;
+            this.wwwwwwww.Text = "Features";
             // 
             // comboBoxFilter
             // 
@@ -425,12 +425,13 @@ namespace rustbox
             // 
             this.comboBoxChams.FormattingEnabled = true;
             this.comboBoxChams.Items.AddRange(new object[] {
-            "Scattering Chams",
-            "Null Chams"});
+            "White Chams",
+            "Null Chams (no walls)",
+            "Chrome Chams"});
             this.comboBoxChams.Location = new System.Drawing.Point(72, 39);
             this.comboBoxChams.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxChams.Name = "comboBoxChams";
-            this.comboBoxChams.Size = new System.Drawing.Size(78, 21);
+            this.comboBoxChams.Size = new System.Drawing.Size(95, 21);
             this.comboBoxChams.TabIndex = 0;
             this.comboBoxChams.TabStop = false;
             this.comboBoxChams.SelectedIndexChanged += new System.EventHandler(this.comboBoxChams_SelectedIndexChanged);
@@ -904,7 +905,7 @@ namespace rustbox
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(330, 552);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.wwwwwwww);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -913,8 +914,8 @@ namespace rustbox
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.wwwwwwww.ResumeLayout(false);
+            this.wwwwwwww.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFOVSlider)).EndInit();
@@ -954,7 +955,7 @@ namespace rustbox
         public System.Windows.Forms.Label labelRustPID;
         public System.Windows.Forms.Button buttonDetach;
         public System.Windows.Forms.Button buttonAttach;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox wwwwwwww;
         private System.Windows.Forms.CheckBox checkBoxAdminflag;
         private System.Windows.Forms.CheckBox checkBoxNoRecoil;
         private System.Windows.Forms.TabControl tabControl1;

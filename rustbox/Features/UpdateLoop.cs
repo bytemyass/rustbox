@@ -134,17 +134,24 @@ namespace rustbox.Features
 
                             if (baseEntity != 0 && TOD_Sky != 0)
                             {
+                                //scattering mat (white)
                                 ulong components = DMAController.ReadMemory<ulong>(TOD_Sky + 0xA8);
                                 ulong scattering = DMAController.ReadMemory<ulong>(components + 0x1A0);
                                 ulong material = DMAController.ReadMemory<ulong>(scattering + 0x78);
+
+                                //outlineManager mat (shiny/chrome kinda)  
+                                ulong outlineManager = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.OutlineManager);
+                                ulong component = DMAController.ReadMemory<ulong>(outlineManager + 0xB8);
+                                ulong material2 = DMAController.ReadMemory<ulong>(component + 0x0);
+
 
                                 //set player skin to cham material
                                 ulong playerModel = DMAController.ReadMemory<ulong>(baseEntity + Offsets.playerModel); //playerModel in Baseplayer
                                 ulong skinSet = DMAController.ReadMemory<ulong>(playerModel + Offsets.skinSetWomen);
                                 ulong skinSetMale = DMAController.ReadMemory<ulong>(playerModel + Offsets.skinSetMale);
 
-                                SetMaterial(skinSetMale, material);
-                                SetMaterial(skinSet, material);
+                                SetMaterial(skinSetMale, material, material2);
+                                SetMaterial(skinSet, material, material2);
 
                                 if (needsRewrite)
                                     DMAController.WriteMemory<bool>(baseEntity + Offsets.needsClothingRebuild, true); //needs clothing rebuild
@@ -158,7 +165,7 @@ namespace rustbox.Features
             }
         }
 
-        public static void SetMaterial(ulong skinset, ulong material)
+        public static void SetMaterial(ulong skinset, ulong material, ulong material2)
         {
             if (skinset != 0)
             {
@@ -176,19 +183,32 @@ namespace rustbox.Features
 
                             if (material != 0)
                             {
-                                if (formMain.selectedChams == 0)
+                                if (formMain.selectedChams == 0) //scattering
                                 {
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x68, material);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x70, material);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x78, material);
                                 }
-                                else
+                                if (formMain.selectedChams == 1) //null
                                 {
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x68, 0);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x70, 0);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x78, 0);
                                 }
+                            
                             }
+                            if (material2 != 0)
+                            {
+                                if (formMain.selectedChams == 2) //shiny blur
+                                {
+                                    DMAController.WriteMemory<ulong>(currentSkinSet + 0x68, material2);
+                                    DMAController.WriteMemory<ulong>(currentSkinSet + 0x70, material2);
+                                    DMAController.WriteMemory<ulong>(currentSkinSet + 0x78, material2);
+                                }
+                               
+
+                            }
+
                         }
                     }
                 }
@@ -352,7 +372,7 @@ namespace rustbox.Features
 
                 if (setFov && localPlayer != 0)
                 {
-                    ulong camManager = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + 0x31138F0);
+                    ulong camManager = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.GraphicsCVar);
                     ulong camMan = DMAController.ReadMemory<ulong>(camManager + 0xB8);
 
                     DMAController.WriteMemory<float>(camMan + Offsets.cameraFov, fov);
