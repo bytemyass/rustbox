@@ -39,6 +39,9 @@ namespace rustbox
             this.buttonDetach = new System.Windows.Forms.Button();
             this.buttonAttach = new System.Windows.Forms.Button();
             this.wwwwwwww = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.buttonApplyFilter = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -96,7 +99,6 @@ namespace rustbox
             this.labelLR300Pitch = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.trackBarLR300Pitch = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.wwwwwwww.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -214,6 +216,8 @@ namespace rustbox
             // 
             // wwwwwwww
             // 
+            this.wwwwwwww.Controls.Add(this.label10);
+            this.wwwwwwww.Controls.Add(this.button1);
             this.wwwwwwww.Controls.Add(this.label4);
             this.wwwwwwww.Controls.Add(this.comboBoxFilter);
             this.wwwwwwww.Controls.Add(this.buttonApplyFilter);
@@ -238,6 +242,34 @@ namespace rustbox
             this.wwwwwwww.TabIndex = 4;
             this.wwwwwwww.TabStop = false;
             this.wwwwwwww.Text = "Features";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 90);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "FOV:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(115, 85);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "SET";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonSetFOV_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(72, 119);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Filter:";
             // 
             // comboBoxFilter
             // 
@@ -391,7 +423,7 @@ namespace rustbox
             // labelFOV
             // 
             this.labelFOV.AutoSize = true;
-            this.labelFOV.Location = new System.Drawing.Point(159, 87);
+            this.labelFOV.Location = new System.Drawing.Point(39, 90);
             this.labelFOV.Name = "labelFOV";
             this.labelFOV.Size = new System.Drawing.Size(13, 13);
             this.labelFOV.TabIndex = 10;
@@ -400,10 +432,10 @@ namespace rustbox
             // trackBarFOVSlider
             // 
             this.trackBarFOVSlider.LargeChange = 10;
-            this.trackBarFOVSlider.Location = new System.Drawing.Point(88, 84);
+            this.trackBarFOVSlider.Location = new System.Drawing.Point(53, 86);
             this.trackBarFOVSlider.Maximum = 200;
             this.trackBarFOVSlider.Name = "trackBarFOVSlider";
-            this.trackBarFOVSlider.Size = new System.Drawing.Size(69, 45);
+            this.trackBarFOVSlider.Size = new System.Drawing.Size(62, 45);
             this.trackBarFOVSlider.SmallChange = 5;
             this.trackBarFOVSlider.TabIndex = 9;
             this.trackBarFOVSlider.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -412,7 +444,7 @@ namespace rustbox
             // checkBoxFOV
             // 
             this.checkBoxFOV.AutoSize = true;
-            this.checkBoxFOV.Location = new System.Drawing.Point(10, 84);
+            this.checkBoxFOV.Location = new System.Drawing.Point(201, 177);
             this.checkBoxFOV.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxFOV.Name = "checkBoxFOV";
             this.checkBoxFOV.Size = new System.Drawing.Size(76, 17);
@@ -891,15 +923,6 @@ namespace rustbox
             this.trackBarLR300Pitch.TabIndex = 24;
             this.trackBarLR300Pitch.Scroll += new System.EventHandler(this.trackBarLR300Pitch_Scroll);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(72, 119);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Filter:";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1014,6 +1037,8 @@ namespace rustbox
         public System.Windows.Forms.Button buttonApplyFilter;
         public System.Windows.Forms.ComboBox comboBoxFilter;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
     }
 }
 

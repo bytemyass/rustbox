@@ -456,6 +456,13 @@ namespace rustbox
 
         }
 
-        
+        private void buttonSetFOV_Click(object sender, EventArgs e)
+        {
+            
+            ulong camManager = DMAController.ReadMemory<ulong>(DMAController.gameAssembly.vaBase + Offsets.GraphicsCVar);
+            ulong camMan = DMAController.ReadMemory<ulong>(camManager + 0xB8);
+
+            DMAController.WriteMemory<float>(camMan + Offsets.cameraFov, fov);
+        }
     }
 }

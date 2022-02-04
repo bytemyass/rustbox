@@ -34,12 +34,12 @@ namespace rustbox
             Workbench3 = 4194304
         }
 
-
+        // DECIMAL TO HEX: https://www.rapidtables.com/convert/number/decimal-to-hex.html  (THE SCRIPTS.JSON OFFSETS BELOW WILL BE IN DECIMAL FORM WHEN YOU FIND THEM)
         public static uint gom = 0x17C1F18;
-        public static uint baseNetworkable = 0x3115CF0;   //BaseNetworkable_Typeinfo  > scripts.json
-        public static uint occlusionculling = 0x3116230; //OcclusionCulling_Typeinfo  > scripts.json
-        public static uint OutlineManager = 0x31015D8;  //for blur chams material : OutlineManager_TypeInfo > scripts.json
-        public static uint GraphicsCVar = 0x3113930; //ConVar.Graphics_Typeinfo  > scripts.json
+        public static uint baseNetworkable = 0x3148A08;   //BaseNetworkable_Typeinfo  > scripts.json
+        public static uint occlusionculling = 0x3148F40; //OcclusionCulling_Typeinfo  > scripts.json
+        public static uint OutlineManager = 0x3134068;  //for blur chams material : OutlineManager_TypeInfo > scripts.json
+        public static uint GraphicsCVar = 0x3146608; //ConVar.Graphics_Typeinfo  > scripts.json
 
         public static uint playerFlags = 0x680; //BasePlayer
         public static uint playerEyes = 0x688; //BasePlayer
