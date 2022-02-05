@@ -189,7 +189,7 @@ namespace rustbox.Features
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x70, material);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x78, material);
                                 }
-                                if (formMain.selectedChams == 1) //null
+                                if (formMain.selectedChams == 2) //null
                                 {
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x68, 0);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x70, 0);
@@ -199,7 +199,7 @@ namespace rustbox.Features
                             }
                             if (material2 != 0)
                             {
-                                if (formMain.selectedChams == 2) //shiny blur
+                                if (formMain.selectedChams == 1) //shiny blur
                                 {
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x68, material2);
                                     DMAController.WriteMemory<ulong>(currentSkinSet + 0x70, material2);

@@ -53,10 +53,8 @@ namespace rustbox
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.buttonCullingON = new System.Windows.Forms.Button();
             this.buttonCullingOFF = new System.Windows.Forms.Button();
-            this.checkBoxCullingESP = new System.Windows.Forms.CheckBox();
             this.labelFOV = new System.Windows.Forms.Label();
             this.trackBarFOVSlider = new System.Windows.Forms.TrackBar();
-            this.checkBoxFOV = new System.Windows.Forms.CheckBox();
             this.comboBoxChams = new System.Windows.Forms.ComboBox();
             this.checkBoxInteractiveDebugCamera = new System.Windows.Forms.CheckBox();
             this.checkBoxChams = new System.Windows.Forms.CheckBox();
@@ -225,10 +223,8 @@ namespace rustbox
             this.wwwwwwww.Controls.Add(this.comboBox1);
             this.wwwwwwww.Controls.Add(this.buttonCullingON);
             this.wwwwwwww.Controls.Add(this.buttonCullingOFF);
-            this.wwwwwwww.Controls.Add(this.checkBoxCullingESP);
             this.wwwwwwww.Controls.Add(this.labelFOV);
             this.wwwwwwww.Controls.Add(this.trackBarFOVSlider);
-            this.wwwwwwww.Controls.Add(this.checkBoxFOV);
             this.wwwwwwww.Controls.Add(this.comboBoxChams);
             this.wwwwwwww.Controls.Add(this.checkBoxInteractiveDebugCamera);
             this.wwwwwwww.Controls.Add(this.checkBoxChams);
@@ -265,7 +261,7 @@ namespace rustbox
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(72, 119);
+            this.label4.Location = new System.Drawing.Point(69, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 21;
@@ -278,7 +274,7 @@ namespace rustbox
             "Players",
             "AI",
             "Corpse"});
-            this.comboBoxFilter.Location = new System.Drawing.Point(106, 115);
+            this.comboBoxFilter.Location = new System.Drawing.Point(101, 115);
             this.comboBoxFilter.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxFilter.Name = "comboBoxFilter";
             this.comboBoxFilter.Size = new System.Drawing.Size(61, 21);
@@ -289,7 +285,7 @@ namespace rustbox
             // 
             // buttonApplyFilter
             // 
-            this.buttonApplyFilter.Location = new System.Drawing.Point(169, 114);
+            this.buttonApplyFilter.Location = new System.Drawing.Point(163, 114);
             this.buttonApplyFilter.Name = "buttonApplyFilter";
             this.buttonApplyFilter.Size = new System.Drawing.Size(42, 23);
             this.buttonApplyFilter.TabIndex = 20;
@@ -408,18 +404,6 @@ namespace rustbox
             this.buttonCullingOFF.Visible = false;
             this.buttonCullingOFF.Click += new System.EventHandler(this.buttonCullingOFF_Click);
             // 
-            // checkBoxCullingESP
-            // 
-            this.checkBoxCullingESP.AutoSize = true;
-            this.checkBoxCullingESP.Location = new System.Drawing.Point(8, 142);
-            this.checkBoxCullingESP.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxCullingESP.Name = "checkBoxCullingESP";
-            this.checkBoxCullingESP.Size = new System.Drawing.Size(119, 17);
-            this.checkBoxCullingESP.TabIndex = 13;
-            this.checkBoxCullingESP.Text = "cESP (bool -testing)";
-            this.checkBoxCullingESP.UseVisualStyleBackColor = true;
-            this.checkBoxCullingESP.CheckedChanged += new System.EventHandler(this.checkBoxCullingESP_CheckedChanged);
-            // 
             // labelFOV
             // 
             this.labelFOV.AutoSize = true;
@@ -441,25 +425,13 @@ namespace rustbox
             this.trackBarFOVSlider.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarFOVSlider.Scroll += new System.EventHandler(this.trackBarFOVSlider_Scroll);
             // 
-            // checkBoxFOV
-            // 
-            this.checkBoxFOV.AutoSize = true;
-            this.checkBoxFOV.Location = new System.Drawing.Point(201, 177);
-            this.checkBoxFOV.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxFOV.Name = "checkBoxFOV";
-            this.checkBoxFOV.Size = new System.Drawing.Size(76, 17);
-            this.checkBoxFOV.TabIndex = 8;
-            this.checkBoxFOV.Text = "FOV Slider";
-            this.checkBoxFOV.UseVisualStyleBackColor = true;
-            this.checkBoxFOV.CheckedChanged += new System.EventHandler(this.checkBoxFOV_CheckedChanged);
-            // 
             // comboBoxChams
             // 
             this.comboBoxChams.FormattingEnabled = true;
             this.comboBoxChams.Items.AddRange(new object[] {
-            "White Chams",
-            "Null Chams (no walls)",
-            "Chrome Chams"});
+            "White ",
+            "Chrome ",
+            "Null (no walls)"});
             this.comboBoxChams.Location = new System.Drawing.Point(72, 39);
             this.comboBoxChams.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxChams.Name = "comboBoxChams";
@@ -1026,8 +998,6 @@ namespace rustbox
         public System.Windows.Forms.CheckBox checkBoxJump;
         private System.Windows.Forms.Label labelFOV;
         private System.Windows.Forms.TrackBar trackBarFOVSlider;
-        public System.Windows.Forms.CheckBox checkBoxFOV;
-        public System.Windows.Forms.CheckBox checkBoxCullingESP;
         public System.Windows.Forms.Button buttonCullingOFF;
         public System.Windows.Forms.Button buttonCullingON;
         public System.Windows.Forms.ComboBox comboBox1;

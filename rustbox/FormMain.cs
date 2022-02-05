@@ -324,12 +324,12 @@ namespace rustbox
 
         private void checkBoxFOV_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateLoop.setFov = checkBoxFOV.Checked;
+            
         }
 
         private void checkBoxCullingESP_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateLoop.cullingESP = checkBoxCullingESP.Checked;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
